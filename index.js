@@ -31,7 +31,7 @@ function saveLead(){
         
         // ulEl.append(li)
 
-        // how localStorage is rendered
+        // how localStorage is rendered 
         let listItems = ""
         
         for (let i = 0; i < myLead.length; i++) {

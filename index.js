@@ -5,7 +5,13 @@ const container = document.querySelector('.container')
 const box = document.querySelector('.box')
 const deleteBtn = document.getElementById('delete-btn')
 const leadsFromLocalStorage = JSON.parse( localStorage.getItem("myLead") )
+const tabBtn = document.getElementById('tab-btn')
 
+const tab = [
+    {
+        url: "https://www.linkedin.com/feed/"
+    }
+]
 let myLead = [];
 
 

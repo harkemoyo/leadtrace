@@ -5,6 +5,19 @@ const container = document.querySelector('.container')
 const box = document.querySelector('.box')
 
 let myLead = [];
+
+
+// DELETNG LOCALSTORAGE AND CLEARING THE DOM
+
+const deleteBtn = document.getElementById('delete-btn')
+
+deleteBtn.addEventListener('dblclick', clearBtn)
+
+function clearBtn(){
+    localStorage.clear()
+    myLead = [];
+    saveLead()
+}
 // localstorage is storing of data in browser for a period 
 //  getting from  local storage
 const leadsFromLocalStorage = JSON.parse( localStorage.getItem("myLead") )
@@ -20,6 +33,7 @@ if (leadsFromLocalStorage) {
 saveBtn.addEventListener('click', saveLead);
 
 function saveLead(){
+    // pushing to localStorage
     localStorage.setItem( "myLead",JSON.stringify(myLead))
 
     myLead.push(inputText.value)

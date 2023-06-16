@@ -5,8 +5,9 @@ const container = document.querySelector('.container')
 const box = document.querySelector('.box')
 
 let myLead = [];
-//  getting from local storage
-let leadsFromLocalStorage = JSON.parse( localStorage.getItem("myLead") )
+// localstorage is storing of data in browser for a period 
+//  getting from  local storage
+const leadsFromLocalStorage = JSON.parse( localStorage.getItem("myLead") )
 
 if (leadsFromLocalStorage) {
     myLead = leadsFromLocalStorage

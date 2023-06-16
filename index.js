@@ -7,11 +7,6 @@ const deleteBtn = document.getElementById('delete-btn')
 const leadsFromLocalStorage = JSON.parse( localStorage.getItem("myLead") )
 const tabBtn = document.getElementById('tab-btn')
 
-const tab = [
-    {
-        url: "https://www.linkedin.com/feed/"
-    }
-]
 let myLead = [];
 
 
@@ -33,6 +28,7 @@ if (leadsFromLocalStorage) {
     myLead = leadsFromLocalStorage
     // call savelead fnc for the called url from local storage to render the trace of save url with eas
     render(myLead)
+    
 }
 function render(lead){
     // const li = document.createElement('li');
@@ -52,6 +48,7 @@ for (let i = 0; i < lead.length; i++) {
   
   }
 ulEl.innerHTML = listItems
+
 }
 
 // savebtn
@@ -66,7 +63,7 @@ function saveLead(){
     inputText.value = "";
     
     render(myLead)
-  
+    
     }
 
 
@@ -74,14 +71,13 @@ function saveLead(){
 tabBtn.addEventListener('click', grabbing)
 
 function grabbing(){
-    chrome.tabs.query({active: true, currentWindow: true}, (tabs) =>{
+    chrome.tabs.query({active: true, currentWindow: true}, (tabs)=>{
         myLead.push(tabs[0].url)
-        localStorage.setItem("myLead", JSON.stringify(myLead))
+        localStorage.setItem("myLeads", JSON.stringify(myLead) )
         render(myLead)
     })
-  
-    
 }
+
 // container.innerHTML ='<button>submit</button>' 
 
 // container.addEventListener('click', buyBtn)

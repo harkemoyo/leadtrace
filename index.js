@@ -3,33 +3,52 @@ const inputText = document.getElementById('input-el')
 const ulEl = document.getElementById('ul-el')
 const container = document.querySelector('.container')
 const box = document.querySelector('.box')
+const deleteBtn = document.getElementById('delete-btn')
+const leadsFromLocalStorage = JSON.parse( localStorage.getItem("myLead") )
 
 let myLead = [];
 
 
 // DELETNG LOCALSTORAGE AND CLEARING THE DOM
 
-const deleteBtn = document.getElementById('delete-btn')
+
 
 deleteBtn.addEventListener('dblclick', clearBtn)
 
 function clearBtn(){
     localStorage.clear()
     myLead = [];
-    saveLead()
+    render(myLead)
 }
-// localstorage is storing of data in browser for a period 
+// localstorage is storing of data in browser for a period that you want
 //  getting from  local storage
-const leadsFromLocalStorage = JSON.parse( localStorage.getItem("myLead") )
 
 if (leadsFromLocalStorage) {
     myLead = leadsFromLocalStorage
     // call savelead fnc for the called url from local storage to render the trace of save url with eas
-    saveLead()
+    render(myLead)
 }
-   
+function render(lead){
+    // const li = document.createElement('li');
+// li.appendChild(document.createTextNode(`${inputText.value}`))
 
+// ulEl.append(li)
 
+// how localStorage is rendered 
+let listItems = ""
+
+for (let i = 0; i < lead.length; i++) {
+  
+  listItems +=  `<li>
+  <a target ="_blank" href =${lead[i]}>${lead[i]}
+  </a>
+  </li>`
+  
+  }
+ulEl.innerHTML = listItems
+}
+
+// savebtn
 saveBtn.addEventListener('click', saveLead);
 
 function saveLead(){
@@ -40,26 +59,10 @@ function saveLead(){
   
     inputText.value = "";
     
-    
-        // const li = document.createElement('li');
-        // li.appendChild(document.createTextNode(`${inputText.value}`))
-        
-        // ulEl.append(li)
-
-        // how localStorage is rendered 
-        let listItems = ""
-        
-        for (let i = 0; i < myLead.length; i++) {
-            
-            listItems +=  `<li>
-            <a target ="_blank" href =${myLead[i]}>${myLead[i]}
-            </a>
-            </li>`
-            
-            }
-          ulEl.innerHTML = listItems
+    render(myLead)
+  
     }
-    
+
 
 
 

@@ -70,13 +70,22 @@ function saveLead(){
     }
 
 
+// Grabing the url that you are in at that given time by save tab
+tabBtn.addEventListener('click', grabbing)
 
-
-
+function grabbing(){
+    chrome.tabs.query({active: true, currentWindow: true}, (tabs) =>{
+        myLead.push(tabs[0].url)
+        localStorage.setItem("myLead", JSON.stringify(myLead))
+        render(myLead)
+    })
+  
+    
+}
 // container.innerHTML ='<button>submit</button>' 
 
 // container.addEventListener('click', buyBtn)
-// function buyBtn(){
+// function buyBtn()
 //    const para = document.createElement('p');
 //    para.appendChild(document.createTextNode('than you'))
 //   container.appendChild(para)

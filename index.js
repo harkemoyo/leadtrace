@@ -71,8 +71,8 @@ function saveLead(){
 tabBtn.addEventListener('click', grabbing)
 
 function grabbing(){
-    chrome.tabs.query({active: true, currentWindow: true}, (tabs)=>{
-        myLead.push(tabs[0].url)
+    chrome.tabs.query({active: true, currentWindow: true}, (tab)=>{
+        myLead.push(tab[0].url)
         localStorage.setItem("myLeads", JSON.stringify(myLead) )
         render(myLead)
     })

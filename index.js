@@ -31,23 +31,23 @@ if (leadsFromLocalStorage) {
     
 }
 function render(lead){
-    const li = document.createElement('li');
-li.appendChild(document.createTextNode(`${inputText.value}`))
+    // const li = document.createElement('li');
+// li.appendChild(document.createTextNode(`${inputText.value}`))
 
-ulEl.append(li)
+// ulEl.append(li)
 
 // how localStorage is rendered 
-// let listItems = ""
+let listItems = ""
 
-// for (let i = 0; i < lead.length; i++) {
+for (let i = 0; i < lead.length; i++) {
   
-//   listItems +=  `<li>
-//   <a target ="_blank" href =${lead[i]}>${lead[i]}
-//   </a>
-//   </li>`
+  listItems +=  `<li>
+  <a target ="_blank" href =${lead[i]}>${lead[i]}
+  </a>
+  </li>`
   
-//   }
-// ulEl.innerHTML = listItems
+  }
+ulEl.innerHTML = listItems
 
 }
 
